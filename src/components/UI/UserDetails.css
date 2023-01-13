@@ -1,0 +1,10 @@
+.user{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    
+    margin-top: 50px;
+    text-align: left;
+    background-color: aliceblue;
+}
