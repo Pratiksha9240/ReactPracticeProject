@@ -1,9 +1,22 @@
+import { useState } from "react";
+
 const AgeError = (props) => {
-    return (
-        <div style={props.style}>
-            <p>Age is Not Correct</p>
-        </div>
-    )
-}
+  const [flag, setFlag] = useState(false);
+
+  const onCancel = () => {
+    setFlag(true);
+  };
+
+  return (
+    <div style={props.style}>
+      {flag === false && (
+        <form>
+          <p>Please provide correct Age</p>
+          <button onClick={onCancel}>Cancel</button>
+        </form>
+      )}
+    </div>
+  );
+};
 
 export default AgeError;

@@ -1,9 +1,22 @@
-const NameError = (props) => {
-    return (
-        <div style={props.style}>
-            <p>Please Enter Name</p>
-        </div>
-    )
-}
+import { useState } from "react";
 
-export default NameError
+const NameError = (props) => {
+  const [flag, setFlag] = useState(false);
+
+  const onCancel = () => {
+    setFlag(true);
+  };
+
+  return (
+    <div style={props.style}>
+      {flag === false && (
+        <form>
+          <p>Please Enter Name</p>
+          <button onClick={onCancel}>Cancel</button>
+        </form>
+      )}
+    </div>
+  );
+};
+
+export default NameError;
