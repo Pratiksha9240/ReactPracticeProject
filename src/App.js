@@ -1,25 +1,24 @@
-import logo from "./logo.svg";
-import "./App.css";
-import User from "./components/User";
-import UserDetails from "./components/UI/UserDetails";
-import { useState } from "react";
+import React, { useState } from 'react';
+
+import AddUser from './components/Users/AddUser';
+import UsersList from './components/Users/UsersList';
 
 function App() {
+  const [usersList, setUsersList] = useState([]);
 
-  const [users, setUsers] = useState([]);
-
-  const addUserHandler = (user) => {
-    setUsers((preuser) => {
-      // console.log("User",user);
-      // console.log("Prev Users",preuser);
-      return [user, ...preuser];
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
     });
   };
 
   return (
-    <div className="App">
-      <User onAddUser={addUserHandler} />
-      <UserDetails userList={users} />
+    <div>
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
     </div>
   );
 }
